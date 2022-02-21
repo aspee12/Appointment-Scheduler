@@ -1,122 +1,211 @@
 <app-navbar></app-navbar>
 <nav class="navbar float-right">
-    <div class="container-fluid">
-        <div class="d-flex" style="margin-left: 1400px;">
-            <button (click)="makeNewAppointment()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Make Appointment</button>
-            <!-- <button (click)="logout()" class="btn btn-primary">Log out</button>  -->
-        </div>
+  <div class="container-fluid">
+    <div class="d-flex" style="margin-left: 1400px">
+      <button
+        (click)="makeNewAppointment()"
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        Make Appointment
+      </button>
     </div>
+  </div>
 </nav>
 <!-- <h3 style="text-align: center;">Create/Update Room</h3> -->
-<table class="container table table-hover table-sm table-bordered table-responsive-sm" style="text-align: center;">
-    <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Appointment Name</th>
-            <th scope="col">Room Name to Book</th>
-            <th scope="col">Date</th>
-            <th scope="col">Start Time</th>
-            <th scope="col">End Time</th>
-            <th scope="col">Comment</th>
-            <th scope="col">Edit/Delete</th>
-
-        </tr>
-    </thead>
-    <tbody *ngFor="let data of getAppointments">
-        <tr *ngIf="this.user_id == data.createBy">
-            <td> {{data.id}} </td>
-            <td> {{data.appointmentName}} </td>
-            <td> {{data.roomName}} </td>
-            <td> {{data.date}} </td>
-            <td> {{data.start_time}} </td>
-            <td> {{data.end_time}}</td>
-            <td> {{data.comments}} </td>
-            <th>
-                <button (click)="editAppointments(data)" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-toggle="tooltip" data-placement="top" title="Edit">
-               Edit
+<table
+  class="container table table-hover table-sm table-bordered table-responsive-sm"
+  style="text-align: center"
+>
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Appointment Name</th>
+      <th scope="col">Room Name to Book</th>
+      <th scope="col">Date</th>
+      <th scope="col">Start Time</th>
+      <th scope="col">End Time</th>
+      <th scope="col">Comment</th>
+      <th scope="col">Edit/Delete</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let data of getAppointments">
+    <tr *ngIf="this.user_id == data.createBy">
+      <td>{{ data.id }}</td>
+      <td>{{ data.appointmentName }}</td>
+      <td>{{ data.roomName }}</td>
+      <td>{{ data.date }}</td>
+      <td>{{ data.start_time }}</td>
+      <td>{{ data.end_time }}</td>
+      <td>{{ data.comments }}</td>
+      <th>
+        <button
+          (click)="editAppointments(data)"
+          class="btn btn-outline-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Edit"
+        >
+          Edit
           <i class="fas fa-edit"></i>
         </button>
-                <button (click)="removeAppointments(data)" class="btn btn-outline-danger" data-toggle="tooltip" data-placement="top" title="Delete">
+        <button
+          (click)="removeAppointments(data)"
+          class="btn btn-outline-danger"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Delete"
+        >
           Delete
           <i class="fas fa-trash"></i>
         </button>
-            </th>
-        </tr>
-    </tbody>
+      </th>
+    </tr>
+  </tbody>
 </table>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <!-- <h5 class="modal-title" id="exampleModalLabel">Edit the room if you have made mistake</h5> -->
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form [formGroup]="appointmentValue" class="row g-4 needs-validation" novalidate style="border-radius: 50px;">
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <h5 class="modal-title" id="exampleModalLabel">Edit the room if you have made mistake</h5> -->
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form
+          [formGroup]="appointmentValue"
+          class="row g-4 needs-validation"
+          novalidate
+          style="border-radius: 50px"
+        >
+          <div class="col-md-12">
+            <label for="validationCustom01" class="form-label"
+              >Name of Appointment</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              formControlName="appointmentName"
+              id="validationCustom01"
+              required
+            />
+          </div>
 
-                    <div class="col-md-12">
-                        <label for="validationCustom01" class="form-label">Name of Appointment</label>
-                        <input type="text" class="form-control" formControlName="appointmentName" id="validationCustom01" required>
-                    </div>
-
-                    <div class="col-md-12">
-                        <label for="validationCustom04" class="form-label">Room To Book</label>
-                        <select formControlName="roomName" class="form-select" id="validationCustom04" required>
-              <option selected disabled>Select Room to Book your Appointment</option>
-              <option *ngFor="let data of appointmentData" [value]="data.roomName">
-                {{data.roomName}}
+          <div class="col-md-12">
+            <label for="validationCustom04" class="form-label"
+              >Room To Book</label
+            >
+            <select
+              formControlName="roomName"
+              class="form-select"
+              id="validationCustom04"
+              required
+            >
+              <option selected disabled>
+                Select Room to Book your Appointment
+              </option>
+              <option
+                *ngFor="let data of appointmentData"
+                [value]="data.roomName"
+              >
+                {{ data.roomName }}
               </option>
             </select>
-                    </div>
-
-                    <!-- <div class="col-md-6">
-            <label for="validationCustom04" class="form-label" formControlName="roomName">Room Number : {{dataSelected}}
-              <input *ngFor="let data of appointmentData" />
-            </label>
           </div>
-           -->
+          <div class="col-md-6">
+            <label for="validationCustom05" class="form-label">Date</label>
+            <input
+              type="date"
+              class="form-control"
+              formControlName="date"
+              id="validationCustom05"
+              required
+            />
+            <div class="invalid-feedback">Please provide a Date</div>
+          </div>
 
-                    <div class="col-md-6">
-                        <label for="validationCustom05" class="form-label">Date</label>
-                        <input type="date" class="form-control" formControlName="date" id="validationCustom05" required>
-                        <div class="invalid-feedback">
-                            Please provide a Date
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <label for="validationCustom05" class="form-label">Start Time</label>
-                        <input type="time" class="form-control" formControlName="start_time" id="validationCustom05" required>
-                        <div class="invalid-feedback">
-                            Please provide a valid Start Time.
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="validationCustom05" class="form-label">End Time</label>
-                        <input type="time" class="form-control" formControlName="end_time" id="validationCustom05" required>
-                        <div class="invalid-feedback">
-                            Please provide a valid End Time.
-                        </div>
-                    </div>
-
-
-                    <div class="form-floating">
-                        <textarea class="form-control" formControlName="comments" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                        <label for="floatingTextarea2">Comments</label>
-                    </div>
-
-                    <div class="col-12">
-                        <!-- <button (click)="addAppointment()" class="btn btn-primary" type="submit">Submit form</button> -->
-                    </div>
-                </form>
+          <div class="col-md-6">
+            <label for="validationCustom05" class="form-label"
+              >Start Time</label
+            >
+            <input
+              type="time"
+              class="form-control"
+              formControlName="start_time"
+              id="validationCustom05"
+              required
+            />
+            <div class="invalid-feedback">
+              Please provide a valid Start Time.
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" (click)="createAppointments()" *ngIf="submitAppointmentButton" class="btn btn-primary" [disabled]="appointmentValue.invalid" data-bs-dismiss="modal">Submit Appointment</button>
-                <button type="button" data-bs-dismiss="modal" (click)="updateAppointmentDetails()" *ngIf="updateAppointmentButton" class="btn btn-success">Update</button>
-            </div>
-        </div>
+          </div>
+          <div class="col-md-6">
+            <label for="validationCustom05" class="form-label">End Time</label>
+            <input
+              type="time"
+              class="form-control"
+              formControlName="end_time"
+              id="validationCustom05"
+              required
+            />
+            <div class="invalid-feedback">Please provide a valid End Time.</div>
+          </div>
+
+          <div class="form-floating">
+            <textarea
+              class="form-control"
+              formControlName="comments"
+              placeholder="Leave a comment here"
+              id="floatingTextarea2"
+              style="height: 100px"
+            ></textarea>
+            <label for="floatingTextarea2">Comments</label>
+          </div>
+
+          <div class="col-12">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          (click)="createAppointments()"
+          *ngIf="submitAppointmentButton"
+          class="btn btn-primary"
+          [disabled]="appointmentValue.invalid"
+          data-bs-dismiss="modal"
+        >
+          Submit Appointment
+        </button>
+        <button
+          type="button"
+          data-bs-dismiss="modal"
+          (click)="updateAppointmentDetails()"
+          *ngIf="updateAppointmentButton"
+          class="btn btn-success"
+        >
+          Update
+        </button>
+      </div>
     </div>
+  </div>
 </div>

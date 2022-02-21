@@ -7,18 +7,10 @@
                     <h5>Please Enter Username, email & password!!</h5>
                 </div>
                 <form [formGroup]="adminLoginForm" (ngSubmit)="adminLogin()">
-
-                    <!-- <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">User Name</label>
-                            <input type="text" formControlName="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                            <small class="text-danger" *ngIf="adminLoginForm.controls['username'].touched && adminLoginForm.hasError('required','username')">Email address is required</small>
-                        </div> -->
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
                         <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                         <div id="emailHelp" class="form-text ">We'll never share your email with anyone else.</div>
-                        <!-- <span class="text-danger" *ngIf="email && email.invalid && email.touched"> * Email address is Invalid </span> -->
                         <small class="text-danger" *ngIf="adminLoginForm.controls['email'].touched && adminLoginForm.hasError('required','email')">Email address is required</small>
                     </div>
                     <div class="mb-3">

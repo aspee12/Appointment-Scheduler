@@ -33,7 +33,7 @@ export class AdminComponent implements OnInit {
     this.api.deleteUsers(user.id)
       .subscribe(res => {
         this.getAllUsers();
-        alert('Delete Successful!')
+        alert('User Decline Successful!')
       })
   }
 
@@ -42,7 +42,7 @@ export class AdminComponent implements OnInit {
     this.api.updateUser(user)
       .subscribe(res => {
         this.getAllUsers();
-        alert('User was Approved')
+        alert('User was Successfully Approved')
       })
 
   }

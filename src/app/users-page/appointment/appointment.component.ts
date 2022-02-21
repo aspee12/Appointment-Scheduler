@@ -80,8 +80,6 @@ export class AppointmentComponent implements OnInit {
     this.appointmentObj.end_time = this.appointmentValue.value.end_time;
     this.appointmentObj.comments = this.appointmentValue.value.comments;
     this.appointmentObj.createBy = this.user_id;
-    // this.appointmentObj.createBy = this.appointmentValue.value.userName;
-    // console.log(this.appointmentValue.value.date, 'date', this.appointmentValue.value.start_time, 'time', this.appointmentValue.value.end_time)
     this.api
       .getDuplicationAppointments(
         this.appointmentValue.value.roomName,
@@ -147,7 +145,7 @@ export class AppointmentComponent implements OnInit {
     this.updateappointmentObj.end_time = this.appointmentValue.value.end_time;
     this.updateappointmentObj.comments = this.appointmentValue.value.comments;
     this.updateappointmentObj.createBy = this.user_id;
-    
+
     console.log(this.appointmentObj, 'results');
 
     this.api

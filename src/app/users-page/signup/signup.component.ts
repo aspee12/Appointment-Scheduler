@@ -50,31 +50,9 @@ export class SignupComponent implements OnInit {
         alert("Email already Exists")
       }
     })
-    // this.individualResponse = 'http://localhost:3000/Users?email='+ this.email?.value,
-    // if(this.individualResponse == null){
-    //   console.log("getting empty")
-    // }
-    //   this.http.post<any>("http://localhost:3000/Users",this.signupForm.value)
-    //   .subscribe(res=>{
-    //     alert("Rigster Susscussfull");
-    //     this.signupForm.reset();
-    //     this.router.navigate(['login']);
-    //   },
-    //   err=>{
-    //     alert("Opps! Somthing went Wrong!")
-    //   })
-    // }
-    // else{
-    //   alert("Email already exists")
-    // }
-
+ 
   }
 
-
-  // signUp() {
-  //   this.http.post('http://localhost:3000/signupUsers',this.signupForm.getRawValue())
-  //   .subscribe( ()=> this.router.navigate(['login']));
-  // }
 
   get fullname() { return this.signupForm.get('fullname'); } //For validation form
 

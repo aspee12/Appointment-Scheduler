@@ -6,42 +6,44 @@ import { ApiService } from 'src/app/Services/api.service';
 @Component({
   selector: 'app-admin-login',
   templateUrl: './admin-login.component.html',
-  styleUrls: ['./admin-login.component.css']
+  styleUrls: ['./admin-login.component.css'],
 })
 export class AdminLoginComponent implements OnInit {
-
-  adminLoginForm!: FormGroup
-  constructor(private formBulilder: FormBuilder, private api: ApiService, private route: Router) { }
+  adminLoginForm!: FormGroup;
+  constructor(
+    private formBulilder: FormBuilder,
+    private api: ApiService,
+    private route: Router
+  ) {}
 
   ngOnInit(): void {
     this.adminLoginForm = this.formBulilder.group({
       id: [],
-      // username: [''],
       email: ['', Validators.required],
-      password: ['', Validators.required]
-    })
+      password: ['', Validators.required],
+    });
   }
   adminLogin() {
-    this.api.getAdminCridential()
-      .subscribe(res => {
+    this.api.getAdminCridential().subscribe(
+      (res) => {
         const admin = res.find((i: any) => {
-          return i.email === this.adminLoginForm.value.email
-            && i.password === this.adminLoginForm.value.password
+          return (
+            i.email === this.adminLoginForm.value.email &&
+            i.password === this.adminLoginForm.value.password
+          );
         });
         if (admin) {
           localStorage.setItem('admin', JSON.stringify(admin));
-          // console.log(localStorage.setItem('admin', JSON.stringify(admin.username)))
-          // sessionStorage.setItem('admin', admin.username);
-          alert("Admin Login Successfull");
+          alert('Admin Login Successfull');
           this.adminLoginForm.reset();
-          this.route.navigate(['/dashboard'])
+          this.route.navigate(['/dashboard']);
+        } else {
+          alert('Admin Not Found!');
         }
-        else {
-          alert("Admin Not Found!")
-        }
-      }, error => {
-        alert("Opps! Something went wrong")
-      })
+      },
+      (error) => {
+        alert('Opps! Something went wrong');
+      }
+    );
   }
-
 }
