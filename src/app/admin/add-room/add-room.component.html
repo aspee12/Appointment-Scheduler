@@ -1,0 +1,140 @@
+<app-dashboard></app-dashboard>
+<!-- <div class="container">
+    <div class="submit-form">
+                <h2>Add Room Here</h2>
+                <div *ngIf="!submitted">
+                  <div class="form-group">
+                    <label for="title">Title</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="title"
+                      required
+                      [(ngModel)]="addroom.title"
+                      name="title"
+                      placeholder="Room Name"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="title">Title</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="room"
+                      required
+                      [(ngModel)]="addroom.room"
+                      name="room"
+                      placeholder="Room Number"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="description">Description</label>
+                    <input
+                      class="form-control"
+                      id="description"
+                      required
+                      [(ngModel)]="addroom.description"
+                      name="description"
+                      placeholder="Description"
+                    />
+                  </div>
+                  <br>
+                  <div>
+                      <button (click)="saveRoom()" class="btn btn-success">Submit</button>
+
+                  </div>
+                </div>
+                <div *ngIf="submitted">
+                    <div class="container"> 
+                        <h4 class="text-success">Tutorial was submitted successfully!</h4>
+                        <button (click)="newRoom()" class="btn btn-success">Add New</button> <br> <br>
+                        <button routerLink="/addroom"class="btn btn-dark">Back </button>
+                    </div>
+                
+                    
+                
+                </div>
+              </div>
+             <div>
+                <button type="button" (click)="saveRoom()" class="btn btn-primary">Add</button>
+            </div> -->
+<!-- </div>  -->
+
+<nav class="navbar float-right">
+    <div class="container-fluid">
+        <div class="d-flex" style="margin-left: 1400px;">
+            <button (click)="addNewRoom()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Create Room</button>
+            <!-- <button (click)="logout()" class="btn btn-primary">Log out</button>  -->
+        </div>
+    </div>
+</nav>
+<h3 style="text-align: center;">Create/Update Room</h3>
+<table class="container table table-hover table-sm table-bordered table-responsive-sm" style="text-align: center;">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Room Name</th>
+            <!-- <th scope="col">Room Number</th> -->
+            <th scope="col">Description</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of roomData">
+            <td> {{data.id}} </td>
+            <td> {{data.roomName}} </td>
+            <!-- <td> {{data.roomNo}} </td> -->
+            <td> {{data.description}} </td>
+            <th>
+                <button (click)="editRooms(data)" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-toggle="tooltip" data-placement="top" title="Edit">
+          Edit
+          <i class="fas fa-edit"></i>
+        </button>
+                <button (click)="removeRooms(data)" class="btn btn-outline-danger" data-toggle="tooltip" data-placement="top" title="Delete">
+          Delete
+          <i class="fas fa-trash"></i>
+        </button>
+            </th>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit the room if you have made mistake</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="roomValue" style="border-radius: 50px;">
+                    <div class="mb-3">
+                        <input type="text" formControlName="roomName" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="Room Name">
+                        <small *ngIf="roomValue.controls['roomName'].dirty && roomValue.hasError('required', 'roomName')" class="text-danger">
+              *Room Name required
+            </small>
+                    </div>
+
+                    <!-- <div class="mb-3">
+            <input type="text" formControlName="roomNo" class="form-control form-control-sm"
+              id="exampleFormControlInput1" placeholder="Room Number">
+            <small *ngIf="roomValue.controls['roomNo'].dirty && roomValue.hasError('required', 'roomNo')"
+              class="text-danger">*Room Number is required.</small>
+          </div> -->
+
+                    <div class="form-floating">
+                        <textarea class="form-control" formControlName="description" placeholder="Write Room Description" id="floatingTextarea"></textarea>
+                        <label>Description</label>
+                        <small *ngIf="roomValue.controls['description'].dirty && roomValue.hasError('required','description')" class="text-danger">*Don't Keep discription Empty</small>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" [disabled]="roomValue.invalid" data-bs-dismiss="modal" (click)="createRooms()" *ngIf="showAdd" class="btn btn-primary">Add</button>
+                <button type="button" data-bs-dismiss="modal" (click)="updateSaveRooms()" *ngIf="showUpdate" class="btn btn-success">Update</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,141 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "Users": [
+    {
+      "fullname": "Tanidn",
+      "email": "boss@gmail.com",
+      "phone": 17685432,
+      "password": "12345",
+      "isApprove": true,
+      "id": 1
+    },
+    {
+      "fullname": "rr",
+      "email": "boss3@gmail.com",
+      "phone": 17685432,
+      "password": "12345",
+      "isApprove": true,
+      "id": 3
+    },
+    {
+      "fullname": "anynomous",
+      "email": "anynomous@gmail.com",
+      "phone": 12345678,
+      "password": "123456",
+      "isApprove": false,
+      "id": 4
+    }
+  ],
+  "roomlist": [
+    {
+      "id": 1,
+      "roomName": "Admin",
+      "description": "Please be free to ask us"
+    },
+    {
+      "number": 0,
+      "roomName": "HR-NT3",
+      "description": "dfdsfdsf",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "roomName": "new rooom",
+      "description": "this is the new room"
+    }
+  ],
+  "appointment": [
+    {
+      "id": 1,
+      "appointmentName": "Development",
+      "roomName": "HR-NT3",
+      "date": "2022-02-09",
+      "start_time": "16:35",
+      "end_time": "16:38",
+      "comments": "no comments\n",
+      "created-by": 1
+    },
+    {
+      "id": 4,
+      "appointmentName": "something",
+      "roomName": "Admin",
+      "date": "2022-02-09",
+      "start_time": "18:15",
+      "end_time": "18:14",
+      "comments": "no comment",
+      "created-by": 1
+    },
+    {
+      "id": 7,
+      "appointmentName": "Interview",
+      "roomName": "HR-NT3",
+      "date": "2022-02-21",
+      "start_time": "20:56",
+      "end_time": "19:56",
+      "comments": "For new requirement employer "
+    },
+    {
+      "appointmentName": "Tandin",
+      "roomName": "HR-NT3",
+      "date": "2022-02-22",
+      "start_time": "02:28",
+      "end_time": "02:28",
+      "comments": "something",
+      "id": 8
+    },
+    {
+      "appointmentName": "Development",
+      "roomName": "Admin",
+      "date": "2022-02-21",
+      "start_time": "01:32",
+      "end_time": "01:33",
+      "comments": "Test",
+      "id": 9
+    },
+    {
+      "appointmentName": "Development",
+      "roomName": "Admin",
+      "date": "2022-02-22",
+      "start_time": "01:38",
+      "end_time": "01:37",
+      "comments": "uuu",
+      "id": 10
+    },
+    {
+      "appointmentName": "Test",
+      "roomName": "HR-NT3",
+      "date": "2022-02-22",
+      "start_time": "12:20",
+      "end_time": "14:21",
+      "comments": "test",
+      "id": 12
+    },
+    {
+      "appointmentName": "xasdfghj",
+      "roomName": "HR-NT3",
+      "date": "2022-02-22",
+      "start_time": "15:27",
+      "end_time": "12:30",
+      "comments": "Something here",
+      "createBy": 3,
+      "id": 13
+    }
+  ],
+  "adminCredential": [
+    {
+      "username": "admin",
+      "email": "admin@gmail.com",
+      "password": "admin12",
+      "id": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

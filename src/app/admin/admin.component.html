@@ -1,0 +1,23 @@
+<app-dashboard></app-dashboard>
+<table class="table table-bordered" style="text-align: center;">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">FUll Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let data of user">
+        <tr *ngIf="!data.isApprove && data.id !==0">
+            <td> {{data.id}}</td>
+            <td> {{data.fullname}}</td>
+            <td> {{data.email}}</td>
+            <td> {{data.phone}}</td>
+            <span *ngIf="!data.isApprove"><button (click)="approveUser(data)" class="btn btn-outline-success margin-left">Approve</button></span>
+            <span *ngIf="!data.isApprove"><button (click)="deleteAllUsers(data)" class="btn btn-outline-danger bi bi-x-circle-fill margin-left">Decline</button></span>
+        </tr>
+    </tbody>
+
+</table>

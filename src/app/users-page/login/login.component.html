@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center">
+                    <h1>Login</h1>
+                    <h3>Please Enter email & password!!</h3>
+                </div>
+                <form [formGroup]="loginForm" (ngSubmit)="login()">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <span class="text-danger" *ngIf="email && email.invalid && email.touched"> * Email address is Invalid </span>
+                        <small class="text-danger" *ngIf="email && email.errors?.['required'] && email.touched">Email address is required</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1">
+                        <span class="text-danger" *ngIf="loginForm.controls['password'].touched && loginForm.hasError('required','password')">*Password is required must minimum 5 and maximum 8 character</span>
+                    </div>
+                    <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary mb-2">Login</button>
+                </form>
+                <a style="margin-top:10px;" routerLink="/signup"> I don't have account! Click to Rigster</a>
+                <a style="margin-top:10px;" routerLink="/adminlogin"> Login as Admin</a>
+
+            </div>
+        </div>
+    </div>
+</div>

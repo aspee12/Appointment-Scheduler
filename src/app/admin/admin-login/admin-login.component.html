@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center">
+                    <h2>Admin Login</h2>
+                    <h5>Please Enter Username, email & password!!</h5>
+                </div>
+                <form [formGroup]="adminLoginForm" (ngSubmit)="adminLogin()">
+
+                    <!-- <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">User Name</label>
+                            <input type="text" formControlName="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            <small class="text-danger" *ngIf="adminLoginForm.controls['username'].touched && adminLoginForm.hasError('required','username')">Email address is required</small>
+                        </div> -->
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text ">We'll never share your email with anyone else.</div>
+                        <!-- <span class="text-danger" *ngIf="email && email.invalid && email.touched"> * Email address is Invalid </span> -->
+                        <small class="text-danger" *ngIf="adminLoginForm.controls['email'].touched && adminLoginForm.hasError('required','email')">Email address is required</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1">
+                        <span class="text-danger" *ngIf="adminLoginForm.controls['password'].touched && adminLoginForm.hasError('required','password')">*Password is required must minimum 5 and maximum 8 character</span>
+                    </div>
+                    <button [disabled]="!adminLoginForm.valid" type="submit" class="btn btn-primary mb-2"> Login </button>
+                </form>
+                <a style="margin-top:10px;;" class="text-dark" routerLink="/login">Login as User</a>
+            </div>
+        </div>
+    </div>
+</div>

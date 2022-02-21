@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center">
+                    <h1>Sign Up</h1>
+                    <h3>Rigster Here</h3>
+                </div>
+                <form [formGroup]="signupForm" (ngSubmit)="signUp()">
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Full Name</label>
+                        <input type="text" formControlName="fullname" class="form-control" id="exampleInputPassword1">
+                        <span class="text-danger" *ngIf="fullname && fullname.invalid && fullname.touched"> * Name Required and name cannot be number</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Phone Number</label>
+                        <input type="number" formControlName="phone" class="form-control" id="exampleInputPassword1">
+                        <span class="text-danger" *ngIf="signupForm.controls['phone'].touched && signupForm.hasError('required','phone')"> * Phone Number Required must be number</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">
+                            We'll never share your email with anyone else.
+                        </div>
+                        <span class="text-danger" *ngIf="email && email.invalid && email.touched"> * Email address is Invalid </span>
+                        <small class="text-danger" *ngIf="email && email.errors?.['required'] && email.touched">Email address is required</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1">
+                        <span class="text-danger" *ngIf="signupForm.controls['password'].touched && signupForm.hasError('required','password')"> * Password required must minimun 5 and maximum 8 character</span>
+                    </div>
+                    <button [disabled]="!signupForm.valid" type="submit" class="btn btn-primary">Sign Up</button>
+                </form>
+                <a style="margin-top: 10px;" routerLink="/login">Already Rigstered! Click to Login</a>
+            </div>
+        </div>
+    </div>
+</div>
